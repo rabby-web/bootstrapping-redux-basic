@@ -12,7 +12,7 @@ const Navbar = () => {
             src={myImage}
             alt="Description of the image"
           />
-          <span className="font-bold text-[#218315] text-xl">Task Master</span>
+          <span className="font-bold text-green-500 text-xl">Task Master</span>
           <Link to="/">Tasks</Link>
           <Link to="/users">Users</Link>
           <div className="ml-auto"></div>
