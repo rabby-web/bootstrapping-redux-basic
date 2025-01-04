@@ -15,7 +15,7 @@ const Tasks = () => {
       </div>
       <div className="space-y-5 mt-5">
         {tasks.map((task) => (
-          <TaskCard task={task}></TaskCard>
+          <TaskCard task={task} key={task.id}></TaskCard>
         ))}
       </div>
     </div>

@@ -10,7 +10,7 @@ interface InitialState {
 const initialState: InitialState = {
   tasks: [
     {
-      id: "sss",
+      id: "s1",
       title: "Initialize Frontend",
       description: "Create Home Page And Routing",
       dueDate: "2025-11",
@@ -18,7 +18,7 @@ const initialState: InitialState = {
       priority: "High",
     },
     {
-      id: "ssss",
+      id: "s2",
       title: "Initialize GitHub",
       description: "Create Home Page And Routing",
       dueDate: "2025-11",
@@ -26,7 +26,7 @@ const initialState: InitialState = {
       priority: "Medium",
     },
     {
-      id: "ssss",
+      id: "s3",
       title: "Tailwind CSS",
       description: "Create Home Page And Routing",
       dueDate: "2025-11",
@@ -34,7 +34,7 @@ const initialState: InitialState = {
       priority: "Medium",
     },
     {
-      id: "ssss",
+      id: "s4",
       title: "React",
       description: "Create Home Page And Routing",
       dueDate: "2025-11",
