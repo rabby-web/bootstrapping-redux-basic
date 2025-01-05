@@ -1,6 +1,7 @@
 import { RootState } from "@/redux/store";
 import { ITask } from "./../../../../types";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 interface InitialState {
   tasks: ITask[];
@@ -9,38 +10,14 @@ interface InitialState {
 
 const initialState: InitialState = {
   tasks: [
-    {
-      id: "s1",
-      title: "Initialize Frontend",
-      description: "Create Home Page And Routing",
-      dueDate: "2025-11",
-      isCompleted: false,
-      priority: "High",
-    },
-    {
-      id: "s2",
-      title: "Initialize GitHub",
-      description: "Create Home Page And Routing",
-      dueDate: "2025-11",
-      isCompleted: false,
-      priority: "Medium",
-    },
-    {
-      id: "s3",
-      title: "Tailwind CSS",
-      description: "Create Home Page And Routing",
-      dueDate: "2025-11",
-      isCompleted: false,
-      priority: "Medium",
-    },
-    {
-      id: "s4",
-      title: "React",
-      description: "Create Home Page And Routing",
-      dueDate: "2025-11",
-      isCompleted: false,
-      priority: "Low",
-    },
+    // {
+    //   id: "s1",
+    //   title: "Initialize Frontend",
+    //   description: "Create Home Page And Routing",
+    //   dueDate: "2025-11",
+    //   isCompleted: false,
+    //   priority: "High",
+    // }
   ],
   filter: "all",
 };
@@ -48,7 +25,18 @@ const initialState: InitialState = {
 const taskSlice = createSlice({
   name: "task",
   initialState,
-  reducers: {},
+  reducers: {
+    addTask: (state, action: PayloadAction<ITask>) => {
+      const id = uuidv4();
+      const taskData = {
+        ...action.payload,
+        id,
+        isDeleted: false,
+      };
+
+      state.tasks.push(taskData);
+    },
+  },
 });
 
 export const selectTasks = (state: RootState) => {
@@ -57,5 +45,7 @@ export const selectTasks = (state: RootState) => {
 export const selectFilter = (state: RootState) => {
   return state.todo.filter;
 };
+
+export const { addTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

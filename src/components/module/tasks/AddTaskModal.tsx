@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -11,7 +12,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -30,15 +30,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { addTask } from "@/redux/features/tasks/tasksSlice";
+import { useAppDispatch } from "@/redux/hook";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 
 export function AddTaskModal() {
+
   const form = useForm();
-  const onSubmit = (data) => {
+
+  const dispatch = useAppDispatch()
+
+  const onSubmit = (data: any) => {
     console.log("sss", data);
+    dispatch(addTask(data))
   };
+
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -87,7 +96,7 @@ export function AddTaskModal() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Priority" />
+                        <SelectValue placeholder="Select Priority" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
