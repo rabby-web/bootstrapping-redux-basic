@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -34,19 +33,17 @@ import { addTask } from "@/redux/features/tasks/tasksSlice";
 import { useAppDispatch } from "@/redux/hook";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { ITask } from "types";
 
 export function AddTaskModal() {
-
   const form = useForm();
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const onSubmit = (data: any) => {
-    console.log("sss", data);
-    dispatch(addTask(data))
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    dispatch(addTask(data as ITask));
   };
-
 
   return (
     <Dialog>
