@@ -10,7 +10,7 @@ const Tasks = () => {
   return (
     <div className="mx-auto max-w-7xl px-5 mt-20">
       <div className="flex justify-between items-center">
-        <h1>Tasks</h1>
+        <h1>Tasks </h1>
         <AddTaskModal></AddTaskModal>
       </div>
       <div className="space-y-5 mt-5">
