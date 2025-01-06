@@ -4,7 +4,7 @@ import { createSlice, PayloadAction, nanoid } from "@reduxjs/toolkit";
 
 interface InitialState {
   tasks: ITask[];
-  filter: "all" | "High" | "Medium" | "Low";
+  filter: "all" | "high" | "medium" | "low";
 }
 
 const initialState: InitialState = {
@@ -44,6 +44,12 @@ const taskSlice = createSlice({
     },
     deleteTask: (state, action: PayloadAction<string>) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+    },
+    updateFilter: (
+      state,
+      action: PayloadAction<"all" | "high" | "medium" | "low">
+    ) => {
+      state.filter = action.payload;
     },
   },
 });
